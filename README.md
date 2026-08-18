@@ -4,7 +4,6 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)
-![Netlify Ready](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
 
 **DentalTrack Pro** is a modern, responsive, and serverless Patient Visit Tracking Dashboard designed specifically for Dental Clinics. It runs entirely in the browser using Vanilla JavaScript and LocalStorage, requiring **zero backend infrastructure**.
 
