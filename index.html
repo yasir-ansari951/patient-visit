@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-50">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedTrack Pro – Dental Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="h-full text-slate-800 antialiased selection:bg-blue-600 selection:text-white">
+
+  <div class="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 p-4 relative overflow-hidden">
+    <div class="absolute top-10 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="w-full max-w-md bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden animate-fade-in z-10">
+      <div class="bg-gradient-to-br from-slate-900 to-blue-900 p-8 text-center relative text-white">
+        <div class="mb-4 mx-auto max-w-xs flex flex-col items-center">
+          <!-- Logo with automatic text fallback if file is not found/loaded yet -->
+          <img src="assets/logo.png" alt="Dental Clinic" class="w-full h-auto" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+          <div class="hidden text-center py-2 text-white">
+            <i class="fa-solid fa-tooth text-4xl text-cyan-300 mb-2"></i>
+            <h2 class="text-xl font-extrabold tracking-wider">DENTAL</h2>
+            <p class="text-sm font-light text-blue-200">Clinic Portal</p>
+          </div>
+        </div>
+        <h1 class="text-xl font-bold tracking-tight">Welcome to the Dental Clinic</h1>
+        <p class="text-blue-200 text-xs mt-1 font-medium">Doctor Login Portal</p>
+      </div>
+
+      <form id="login-form" class="p-8 space-y-6">
+        <div id="login-error" class="hidden bg-rose-50 border border-rose-200 text-rose-700 px-4 py-3 rounded-xl text-xs flex items-center gap-2">
+          <i class="fa-solid fa-triangle-exclamation text-rose-500 text-sm"></i>
+          <span id="login-error-text">Invalid email or password.</span>
+        </div>
+        <div>
+          <label for="login-email" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Doctor Email Address</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400"><i class="fa-solid fa-envelope text-sm"></i></div>
+            <input type="email" id="login-email" required placeholder="doctor@gmail.com" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition font-medium">
+          </div>
+        </div>
+        <div>
+          <label for="login-password" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">Password</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400"><i class="fa-solid fa-lock text-sm"></i></div>
+            <input type="password" id="login-password" required placeholder="••••••••" class="w-full pl-10 pr-10 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition font-medium">
+            <button type="button" onclick="document.getElementById('login-password').type=(document.getElementById('login-password').type==='password'?'text':'password')" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600"><i class="fa-solid fa-eye text-sm"></i></button>
+          </div>
+        </div>
+        <button type="submit" id="login-btn" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2 transition duration-200 transform active:scale-[0.99]">
+          <span>Sign In to Dashboard</span>
+          <i class="fa-solid fa-arrow-right-to-bracket text-sm"></i>
+        </button>
+      </form>
+      <div class="bg-slate-50 px-8 py-4 border-t border-slate-100 text-center text-xs text-slate-500">
+        <i class="fa-solid fa-lock text-slate-400 mr-1"></i>
+        Secure Login &bull; Dental Clinic Portal
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const pass  = document.getElementById('login-password').value.trim();
+      const errorEl = document.getElementById('login-error');
+      const btn = document.getElementById('login-btn');
+
+      if (auth.login(email, pass)) {
+        errorEl.classList.add('hidden');
+        btn.innerHTML = '<i class="fa-solid fa-circle-notch animate-spin"></i> <span>Authenticating...</span>';
+        btn.disabled = true;
+        setTimeout(() => { window.location.href = 'dashboard.html'; }, 600);
+      } else {
+        errorEl.classList.remove('hidden');
+        document.getElementById('login-error-text').innerText = 'Invalid credentials! Use doctor@gmail.com / 123456';
+      }
+    });
+
+    // Auto-redirect if already logged in
+    if (auth.check()) { window.location.href = 'dashboard.html'; }
+  </script>
+</body>
+</html>

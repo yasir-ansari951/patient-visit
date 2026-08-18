@@ -1,0 +1,162 @@
+/* ================================================================
+   MEDTRACK PRO DENTAL CLINIC — Main Stylesheet
+   ================================================================ */
+
+* {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* Glassmorphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+.glass-dark {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+.toast-animate {
+  animation: slideRight 0.35s ease-out forwards;
+}
+
+/* Rainbow gradient utilities */
+.rainbow-gradient {
+  background: linear-gradient(120deg, #ef4444, #f97316, #eab308, #22c55e, #06b6d4, #3b82f6, #8b5cf6, #ec4899);
+  background-size: 300% 300%;
+  animation: rainbowShift 14s ease infinite;
+}
+@keyframes rainbowShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.rainbow-bar {
+  height: 5px;
+  background: linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #06b6d4, #3b82f6, #8b5cf6, #ec4899);
+  background-size: 200% 100%;
+  animation: rainbowShift 8s linear infinite;
+}
+
+/* ===== GLOBAL APP BACKGROUND & FOCUS POLISH ===== */
+body { background-color: #f1f5f9; }
+input:focus, select:focus, textarea:focus, button:focus-visible { outline: none; }
+
+/* ===== PAGE TRANSITIONS ===== */
+.page-enter { opacity: 0; transform: translateY(8px); }
+.page-enter-active { opacity: 1; transform: translateY(0); transition: all 0.3s ease; }
+
+/* ===== DARK MODE OVERRIDES ===== */
+html.dark { color-scheme: dark; }
+html.dark body { background: #0b1220; }
+html.dark .bg-slate-100 { background-color: #0b1220 !important; }
+html.dark .bg-white { background-color: #16202f !important; }
+html.dark .bg-white\/95 { background-color: rgba(22, 32, 47, 0.95) !important; }
+html.dark .bg-slate-50 { background-color: #1b2638 !important; }
+html.dark .bg-slate-50\/80 { background-color: rgba(27, 38, 56, 0.8) !important; }
+html.dark .bg-slate-50\/90 { background-color: rgba(27, 38, 56, 0.9) !important; }
+html.dark header.bg-white { background-color: #111a29 !important; }
+html.dark .text-slate-800 { color: #e2e8f0 !important; }
+html.dark .text-slate-700 { color: #cbd5e1 !important; }
+html.dark .text-slate-600 { color: #a5b4c8 !important; }
+html.dark .text-slate-500 { color: #8494ab !important; }
+html.dark .border-slate-100,
+html.dark .border-slate-200,
+html.dark .border-slate-300,
+html.dark .border-slate-200\/80,
+html.dark .border-slate-200\/60 { border-color: #263449 !important; }
+html.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]) { border-color: #263449 !important; }
+html.dark .bg-blue-50 { background-color: rgba(59,130,246,0.14) !important; }
+html.dark .bg-blue-50\/70 { background-color: rgba(59,130,246,0.14) !important; }
+html.dark .bg-emerald-50 { background-color: rgba(16,185,129,0.14) !important; }
+html.dark .bg-indigo-50 { background-color: rgba(99,102,241,0.14) !important; }
+html.dark .bg-amber-50 { background-color: rgba(245,158,11,0.14) !important; }
+html.dark .bg-rose-50 { background-color: rgba(244,63,94,0.14) !important; }
+html.dark .bg-blue-100 { background-color: rgba(59,130,246,0.22) !important; }
+html.dark .bg-emerald-100 { background-color: rgba(16,185,129,0.22) !important; }
+html.dark .bg-indigo-100 { background-color: rgba(99,102,241,0.22) !important; }
+html.dark .bg-amber-100 { background-color: rgba(245,158,11,0.22) !important; }
+html.dark .bg-rose-100 { background-color: rgba(244,63,94,0.22) !important; }
+html.dark .border-blue-100 { border-color: rgba(59,130,246,0.3) !important; }
+html.dark .text-blue-700 { color: #93c5fd !important; }
+html.dark .text-blue-900 { color: #bfdbfe !important; }
+html.dark .text-emerald-700 { color: #6ee7b7 !important; }
+html.dark .text-amber-900 { color: #fcd34d !important; }
+html.dark .hover\:bg-slate-50:hover,
+html.dark .hover\:bg-slate-50\/80:hover { background-color: #1e2a3f !important; }
+html.dark .hover\:bg-slate-100:hover,
+html.dark .hover\:bg-slate-200:hover { background-color: #283852 !important; }
+html.dark .hover\:bg-blue-50:hover { background-color: rgba(59,130,246,0.18) !important; }
+html.dark .hover\:bg-amber-50:hover { background-color: rgba(245,158,11,0.18) !important; }
+html.dark .hover\:bg-rose-50:hover { background-color: rgba(244,63,94,0.18) !important; }
+html.dark .bg-slate-200 { background-color: #2b3a52 !important; }
+html.dark .hover\:bg-slate-300:hover { background-color: #354763 !important; }
+html.dark ::-webkit-scrollbar-track { background: #0f1929; }
+html.dark ::-webkit-scrollbar-thumb { background: #33445f; }
+html.dark ::-webkit-scrollbar-thumb:hover { background: #46597a; }
+
+/* ===== PRINT STYLING ===== */
+@media print {
+  body { background: white !important; color: black !important; }
+  body.printing-slip #view-app,
+  body.printing-slip #sidebar,
+  body.printing-slip header,
+  body.printing-slip #fab-settings,
+  body.printing-slip #toast-container,
+  body.printing-slip #mobile-backdrop,
+  body.printing-slip #modal-edit,
+  body.printing-slip #modal-delete,
+  body.printing-slip #modal-settings,
+  body.printing-report #sidebar,
+  body.printing-report header,
+  body.printing-report #fab-settings,
+  body.printing-report #toast-container,
+  body.printing-report #mobile-backdrop,
+  body.printing-report #modal-view,
+  body.printing-report #modal-edit,
+  body.printing-report #modal-delete,
+  body.printing-report #modal-settings,
+  body.printing-report .no-print,
+  body.printing-slip .no-print { display: none !important; }
+  body.printing-slip #modal-view {
+    position: fixed !important; inset: 0 !important;
+    display: block !important; background: white !important;
+    padding: 0 !important; overflow: visible !important;
+  }
+  body.printing-slip #modal-view > div {
+    max-width: 100% !important; max-height: none !important;
+    border-radius: 0 !important; box-shadow: none !important; border: none !important;
+  }
+  .print-hide { display: none !important; }
+  body.printing-report #tab-reports { display: block !important; }
+  body.printing-report .tab-content:not(#tab-reports) { display: none !important; }
+  body.printing-report #tab-reports .print-card {
+    box-shadow: none !important; border: 1px solid #ddd !important;
+    margin-bottom: 16px !important; page-break-inside: avoid;
+  }
+  .print-only { display: block !important; }
+  .print-card { box-shadow: none !important; border: 1px solid #ddd !important; margin-bottom: 20px !important; page-break-inside: avoid; }
+  #view-app { display: block !important; }
+  .print-full-width { width: 100% !important; margin: 0 !important; padding: 0 !important; }
+}
