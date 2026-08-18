@@ -12,7 +12,7 @@
 
 **Demo Login Credentials:**
 - **Email:** `doctor@gmail.com`
-- **Password:** `123456`
+- **Password:** 
 
 ---
 
